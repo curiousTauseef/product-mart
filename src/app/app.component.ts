@@ -8,3 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'product-mart';
 }
+// initially angular runs in a webpack dev-server in memory.
