@@ -27,6 +27,7 @@ export class AuthService {
   getUser() {
     return this.user$.asObservable();
   }
+
   register(user: any) {
     // make a api call and save to db
     // update the user subject
@@ -34,18 +35,19 @@ export class AuthService {
     // console.log(`registered user succesfully`, user);
     // return of(user);
 
-    return this.httpClient.post(`${this.apiUrl}register`, user).pipe(
+    return this.httpClient.post<User>(`${this.apiUrl}register`, user).pipe(
       switchMap( savedUser => {
         this.setUser(savedUser);
         console.log(`user reistered sucessfully`, savedUser);
         return of(savedUser);
       }),
       catchError (e => {
-        console.log(`Server Error occured`,e);
+        console.log(`Server Error occured`, e);
         return throwError(`User Registration Failed, please contact admin`);
       })
     );
   }
+
   setUser(user) {
     this.user$.next(user);
   }
