@@ -12,5 +12,4 @@ async function insert(req,res,next){
     const saveduser= await userController.insert(user);
     res.json(saveduser);
 }
-
 module.exports=router;
