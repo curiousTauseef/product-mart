@@ -12,7 +12,7 @@
                             <input
                             name="email"
                             [(ngModel)]="email"
-                            matInput 
+                            matInput
                             placeholder="Email"
                             required
                             type="email">
@@ -20,16 +20,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>            
+                    <td>
                         <mat-form-field>
                             <input
                             name="password"
                             [(ngModel)]="password"
-                            matInput 
+                            matInput
                             placeholder="Password"
                             required
-                            type="password">     
-                        </mat-form-field>        
+                            type="password">
+                        </mat-form-field>
                     </td>
                 </tr>
             </table>
@@ -37,5 +37,8 @@
         <mat-card-actions>
             <button mat-raised-button color="warn" (click)="login()">Login</button>
         </mat-card-actions>
+      <span>Don't have an account ? <a [routerLink]="['/register']" >
+        Register
+      </a> here.</span>
     </mat-card-content>
 </mat-card>
