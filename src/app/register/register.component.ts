@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+
   passwordsMatch(control: FormControl) {
     const password = control.root.get('password');
     return password && control.value !== password.value ? {
