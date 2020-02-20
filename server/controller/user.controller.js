@@ -1,5 +1,6 @@
 const User=require('../models/user.model');
 const bcrypt=require('bcrypt');
+
 async function insert(user){
     console.log(`savingbusers to db`,user)
     //make a mongoose call to save user in DB
@@ -20,10 +21,23 @@ async function getUserByEmailAndPassword(email,password){
         return null;
     }
 }
+
+async function getUserById(id){
+    let user =await User.findById(id);
+    if(user){
+        user.user.toObject();
+        delete user.hashedPassword;
+        return user;
+    }
+    else{
+        return null;
+    }
+}
+
 function isUserValid(user,password,hashedPassword){
     return user && bcrypt.compareSync(password,hashedPassword);
 }
 
 module.exports={
-    insert,getUserByEmailAndPassword
+    insert,getUserByEmailAndPassword,getUserById
 };

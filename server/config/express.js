@@ -7,6 +7,8 @@ const helmet=require('helmet');
 const routes=require('../routes');
 const config=require('./config');
 
+const passport= require('../middleware/passport');
+
 
 const app=express();
 
@@ -31,6 +33,9 @@ app.use(helmet())
 
 //allow cors
 app.use(cors())
+
+//authenticate 
+app.use(passport.initialize());
 
 //allow router localhost:4050/api
 app.use('/api',routes)
