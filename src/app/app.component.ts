@@ -12,18 +12,24 @@ import {Subscription} from 'rxjs';
 export class AppComponent implements OnDestroy {
   user: User;
   userSubscription: Subscription;
+
   constructor(private authService: AuthService, private router: Router) {
-    this.authService.user$.subscribe(user =>
+    this.authService
+      .findMe()
+      .subscribe(user => {
+      this.user = user;         // this check if the user is same and sets the same user after the page is refreshed
+    });
+    this.userSubscription = this.authService.user$.subscribe(user =>
     this.user = user);
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {
-    if (this.userSubscription){
+    if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }

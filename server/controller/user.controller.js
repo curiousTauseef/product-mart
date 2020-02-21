@@ -39,5 +39,7 @@ function isUserValid(user,password,hashedPassword){
 }
 
 module.exports={
-    insert,getUserByEmailAndPassword,getUserById
+    insert,
+    getUserByEmailAndPassword,
+    getUserById
 };

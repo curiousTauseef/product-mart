@@ -1,12 +1,11 @@
 const express = require('express');
 const path=require('path');
+const config=require('./config');
 const bodyParser=require('body-parser');
 const logger=require('morgan');
 const cors=require('cors');
 const helmet=require('helmet');
 const routes=require('../routes');
-const config=require('./config');
-
 const passport= require('../middleware/passport');
 
 

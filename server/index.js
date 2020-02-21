@@ -1,5 +1,5 @@
-const app=require('./config/express');
-const config=require('./config/config');
+const app = require('./config/express');
+const config= require('./config/config');
 //initialize mongoDB
 require('./config/mongoose');
 
